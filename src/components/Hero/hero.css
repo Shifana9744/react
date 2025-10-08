@@ -1,0 +1,41 @@
+section .span-1 {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(96, 53, 1);
+  background-color: rgb(254, 218, 150);
+  margin-bottom: 30px;
+}
+
+section .title-span {
+  color: orange;
+}
+
+section h1,
+section .title-span {
+  font-size: 65px;
+  font-weight: 650;
+  line-height: 60px;
+}
+
+section h5 {
+  font-size: 15px;
+}
+
+section button {
+  width: 150px;
+  border: none;
+  border-radius: 8px;
+  background-color: orange;
+}
+
+section button:hover {
+  background-color:  rgb(254, 142, 50);
+  transform: scale(1.1,1.1);
+  transition: ease-in-out .3s;
+}
+
+section img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

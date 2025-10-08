@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+  section .row {
+    flex-direction: column;
+  }
+
+  section .text-end,
+  section .text-start {
+    text-align: center !important;
+  }
+
+  section .left,
+  section .right {
+    justify-content: center;
+  }
+
+  section .logo-div {
+    margin: 0 0 1rem 0 !important;
+  }
+
+  section .rounded-circle {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading {
+    font-size: 1.25rem;
+  }
+
+  .para {
+    font-size: 0.9rem;
+  }
+
+  .section .img-fluid {
+    max-height: 200px;
+    
+  }
+}
