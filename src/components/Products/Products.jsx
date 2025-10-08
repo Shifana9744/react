@@ -9,24 +9,24 @@ const Products = () => {
   const [activeTab, setActiveTab] = useState('All')
 
   const renderCards = ProductList.map(product => {
-    return(
-      <Cards image={product.image} name={product.name} price={product.price}/>
+    return (
+      <Cards image={product.image} name={product.name} price={product.price} />
     )
   })
 
   return (
     <section>
-      <div className='mx-auto px-5 py-5' style={{maxWidth:'1400px'}}>
-        <Heading highlight='Our' heading=' Products'/>
+      <div className='mx-auto px-5 py-5' style={{ maxWidth: '1400px' }}>
+        <Heading highlight='Our' heading=' Products' />
 
         {/* tabs */}
         <div className='d-flex gap-3 justify-content-center mt-5'>
-          {categories.map(category=> {
-            return(
-              <button key={category} className='px-3 py-2 bg-light' style={{borderRadius:'8px',cursor:'pointer',background:`${activeTab === category ? 'orange': 'light'}`}}
-                onClick={()=> setActiveTab(category)}
+          {categories.map(category => {
+            return (
+              <button key={category} className='px-3 py-2 bg-light' style={{ borderRadius: '8px', cursor: 'pointer', background: `${activeTab === category ? 'orange' : 'light'}` }}
+                onClick={() => setActiveTab(category)}
               >
-                                    {/*  style={{background:`${activeTab === category ? 'orange': 'light'}`}} >*/}
+                {/*  style={{background:`${activeTab === category ? 'orange': 'light'}`}} >*/}
                 {category}
               </button>
             )
@@ -35,6 +35,7 @@ const Products = () => {
 
         {/* product listing */}
         <div className='d-grid grid-cols-4'>
+          
           {renderCards}
         </div>
       </div>
