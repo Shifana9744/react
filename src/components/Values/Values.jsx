@@ -51,9 +51,9 @@ const Values = () => {
     )
   })
 
-  const rightValues = values.slice(0,2).map(item => {
+  const rightValues = values.slice(2,5).map(item => {
     return(
-      <div key={item.id} className='d-flex align-items-center mb-4 right h-100'>
+      <div key={item.id} className='d-flex align-items-center mb-5 right h-100'>
         <div className='d-flex align-items-center logo-div'>
           <span className='d-flex align-items-center justify-content-center text-white rounded- me-3 rounded-circle' style={{width:'40px',height:'40px',backgroundColor:'orange'}}>{item.icon}</span>
         </div>
@@ -69,6 +69,8 @@ const Values = () => {
   return (
     <section>
       <div className='container mx-auto py-5' style={{maxWidth:'1400px'}}>
+
+        <div className='w-75 m-5 mx-auto' style={{height:'2px',backgroundColor:'orange'}}></div>
         <Heading highlight='Our' heading='Values'/>
 
         <div className='row align-items-center mt-5'>

@@ -2,11 +2,12 @@ import React from 'react'
 import Grocery from '../../assets/grocery.png'
 import './hero.css'
 import Button from '../Button/Button'
+import { Link } from 'react-router-dom'
  
 const Hero = () => {
 
   return (
-    <section className='mt-5'>
+    <section className='mt-5 mb-5'>
       <div className="container pt-5 mt-5" style={{minHeight:'100vh'}}>
         <div className="row pt-3">
           <div className="col-sm-12 col-md-6 d-flex flex-column align-items-between justify-content-center gap-4 ">
@@ -20,10 +21,12 @@ const Hero = () => {
 
               <h5>Bred for a high content of beneficial substances. Our products are all fresh and healthy.</h5>
 
-              <button type='button' className=' text-white'>Shop Now</button>
+              {/* <button type='button' className=' text-white'>Shop Now</button> */}
 
               {/* button as component */}
-              {/* <Button content= 'Shop Now'/> */}
+              <Link to='/product-section'>
+                <Button content= 'Shop Now'/>
+              </Link>
           </div>
 
           <div className="col-md-6 col-sm-12">
