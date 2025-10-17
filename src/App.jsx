@@ -7,9 +7,10 @@ import Seafood from './components/Seafood/Seafood'
 import AllProducts from './components/AllProducts/AllProducts'
 import Layout from './components/Layout/Layout'
 import Products from './components/Products/Products'
+import { WishlistProvider } from './components/Wishlist/WishlistContext'
+import WishList from './components/Wishlist/WishList'
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: '/',
@@ -38,12 +39,20 @@ function App() {
         {
           path:'/product-section',
           element : <Products />
+        },
+        {
+          path: '/wishlist',
+          element: <WishList />
         }
       ]
     }
   ])
 
-  return <RouterProvider router={router} />
+  return (
+    <WishlistProvider>
+      <RouterProvider router={router} />
+    </WishlistProvider>
+  )
 }
 
 export default App

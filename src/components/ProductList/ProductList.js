@@ -34,16 +34,16 @@ const products = [
   { id: 8, name: 'Capsicum', price: 2.00, category: 'Vegetables', image: Capsicum },
   { id: 9, name: 'Broccoli', price: 2.20, category: 'Vegetables', image: Broccoli },
   { id: 10, name: 'Yogurt', price: 1.99, category: 'Dairy', image: Yogurt },
-  { id: 11, name: 'Beef', price: 6.50, category: 'Meat', image: Beef }, // Corrected category
-  { id: 12, name: 'Chicken Breast', price: 4.99, category: 'Meat', image: ChickenBreast }, // Corrected name and category
-  { id: 13, name: 'Kale', price: 1.75, category: 'Vegetables', image: Kale }, // Corrected category
+  { id: 11, name: 'Beef', price: 6.50, category: 'Meat', image: Beef },
+  { id: 12, name: 'Chicken Breast', price: 4.99, category: 'Meat', image: ChickenBreast },
+  { id: 13, name: 'Kale', price: 1.75, category: 'Vegetables', image: Kale },
   { id: 14, name: 'Cheese', price: 3.25, category: 'Dairy', image: Cheese },
   { id: 15, name: 'Condensed Milk', price: 2.50, category: 'Dairy', image: CondensedMilk },
   { id: 16, name: 'Salmon', price: 9.99, category: 'Seafood', image: Salmon },
   { id: 17, name: 'Banana', price: 0.99, category: 'Fruits', image: Banana },
   { id: 18, name: 'Milk', price: 2.49, category: 'Dairy', image: Milk },
   { id: 19, name: 'Pineapple', price: 2.75, category: 'Fruits', image: Pineapple },
-  { id: 20, name: 'Tofu', price: 2.30, category: 'Dairy', image: Tofu }, // Corrected category
+  { id: 20, name: 'Tofu', price: 2.30, category: 'Dairy', image: Tofu },
   { id: 21, name: 'Sliced Cheese', price: 3.00, category: 'Dairy', image: SliceCheese },
   { id: 22, name: 'Ricotta Cheese', price: 3.75, category: 'Dairy', image: RicottaCheese },
   { id: 23, name: 'Grapes', price: 3.50, category: 'Fruits', image: Grapes },

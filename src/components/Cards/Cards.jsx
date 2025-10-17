@@ -3,13 +3,22 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '../Button/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useWishlist } from '../Wishlist/WishlistContext';
 
-const Cards = ({ image, name, price }) => {
+const Cards = ({ id,image, name, price}) => {
 
-  const [isFavorite, setFavorite] = useState(false)
+  const {isInWishlist, addToWishlist, removeFromWishlist} = useWishlist()
+  const isFavorite = isInWishlist(id)
+  // const [isFavorite ,setIsFavorite] = useState()
+
 
   const handleFavorite = () => {
-    setFavorite(!isFavorite)
+    // setIsFavorite(!isFavorite)
+    if(isFavorite) {
+      removeFromWishlist(id)
+    } else {
+      addToWishlist({id,image,name,price})
+    }
   }
 
   return (
