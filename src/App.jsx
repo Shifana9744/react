@@ -7,10 +7,21 @@ import Seafood from './components/Seafood/Seafood'
 import AllProducts from './components/AllProducts/AllProducts'
 import Layout from './components/Layout/Layout'
 import Products from './components/Products/Products'
-import { WishlistProvider } from './components/Wishlist/WishlistContext'
-import WishList from './components/Wishlist/WishList'
+import WishList from './components/WishList/WishList'
+import Cart from './components/Cart/Cart'
+import { WishlistProvider } from './components/WishList/WishlistContext'
+import { useState } from 'react'
+import ProductList from './components/ProductList/ProductList'
+import { CartProvider } from './components/Cart/CartContext'
 
 function App() {
+
+  // const [productId, setProductId] = useState()
+  
+  // const filteredObject = ProductList.filter((product)=> product.id == productId)
+  // console.log('filteredObject is : ',filteredObject)
+  // console.log(filteredObject.length)
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -41,18 +52,26 @@ function App() {
           element : <Products />
         },
         {
-          path: '/wishlist',
-          element: <WishList />
+          path : '/wishlist',
+          element : <WishList />
+        },
+        {
+          path : '/cart-section',
+          element : <Cart />
         }
       ]
     }
   ])
 
   return (
-    <WishlistProvider>
-      <RouterProvider router={router} />
-    </WishlistProvider>
+    // <WishlistProvider>
+    <CartProvider>
+      <RouterProvider router={router} /> 
+    </CartProvider>
+    // </WishlistProvider>
+      
   )
+  
 }
 
 export default App

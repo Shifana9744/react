@@ -1,24 +1,61 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '../Button/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useWishlist } from '../Wishlist/WishlistContext';
+import { useCart } from '../Cart/CartContext';
+// import { useWishlist } from '../WishList/WishlistContext';
 
-const Cards = ({ id,image, name, price}) => {
+const Cards = ({ image, name, price, id }) => {
+  const { addToCart } = useCart()
 
-  const {isInWishlist, addToWishlist, removeFromWishlist} = useWishlist()
-  const isFavorite = isInWishlist(id)
-  // const [isFavorite ,setIsFavorite] = useState()
+  // wishlist functions
+  const [wishlist, setWishlist] = useState([])
+  
+    const addToWishlist = (product) => {
+      setWishlist((prevWishlist) => {
+        // check if product already exist in wishlist
+        if (!prevWishlist.some((item) => item.id ===product.id)) {
+          const newWishlist = [...prevWishlist,product]
+          // console.log('updated Wishlist:',newWishlist)  //log updated wishlist
+          return newWishlist
+        } 
+        // console.log('updated wishlist:', prevWishlist)    //log unchanged wishlist 
+        return prevWishlist
+      })
+    }
+  
+    const removeFromWishlist =(productId) => {
+      setWishlist((prevWishlist) => {
+        const newWishlist = prevWishlist.filter((item) => item.id != productId)
+        // console.log('updated wishlist : ',newWishlist)
+        return newWishlist
+      })
+    }
 
+  const [isFavorite, setFavorite] = useState(false)
 
   const handleFavorite = () => {
-    // setIsFavorite(!isFavorite)
-    if(isFavorite) {
-      removeFromWishlist(id)
+    setFavorite(!isFavorite)
+    // create a product object with the necessary details
+    const product = { id, name, price, image };
+    if(!isFavorite) {
+      addToWishlist(product)
     } else {
-      addToWishlist({id,image,name,price})
+      removeFromWishlist(id)
     }
+  }
+
+  useEffect(()=> {
+    const productsName = wishlist.map(item=> item.name)
+    console.log('Wishlist state updated :', productsName)
+    
+  },[wishlist])
+
+  const handleAddToCart = () => {
+    const product = { id, name, price, image }
+    addToCart(product)
+    alert(`product added to cart : ${name}`)
   }
 
   return (
@@ -57,6 +94,7 @@ const Cards = ({ id,image, name, price}) => {
             alignItems: 'center',
             justifyContent: 'center'
           }}
+          onClick={handleAddToCart}
         >
           <AddIcon style={{ color: '#fff', fontSize: '18px' }} />
         </button>

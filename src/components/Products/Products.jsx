@@ -17,7 +17,7 @@ const Products = () => {
 
   const renderCards = filteredProducts.slice(0,8).map(product => (
     <div className="col-12 col-sm-6  col-md-4 col-lg-3 mb-3" key={product.id}>
-      <Cards id={product.id} image={product.image} name={product.name} price={product.price} />
+      <Cards image={product.image} name={product.name} price={product.price} id={product.id}/>
     </div>
   ));
 

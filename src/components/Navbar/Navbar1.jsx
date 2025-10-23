@@ -3,15 +3,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link, useNavigate } from 'react-router-dom';
-import products from '../../components/ProductList/ProductList';
+import { Link } from 'react-router-dom';
 
 const Navbar1 = () => {
 
   const [isScrolled, setIsScrolled] =useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchItem, setSearchItem] = useState('')
-  const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(()=> {
     const handleScroll = () => {
@@ -25,26 +22,6 @@ const Navbar1 = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
-
-  // handle search fn
-  const handleSearch = () => {
-    if (searchItem.trim()) {
-      // Filter products that match the search term (case-insensitive)
-      const matchedProducts = products.filter((item) =>
-        item.name.toLowerCase().includes(searchItem.toLowerCase())
-      );
-
-      if (matchedProducts.length > 0) {
-        // Navigate to search results page with matched products
-        navigate('/search-results', { state: { results: matchedProducts } });
-      } else {
-        // Show alert if no products match
-        alert('No products found matching your search!');
-      }
-    } else {
-      alert('Please enter a valid search term!');
-    }
-  };
 
   return (
 
@@ -79,7 +56,6 @@ const Navbar1 = () => {
                 type="text"
                 placeholder="Search..."
                 className="border-0"
-                onChange={(e)=> setSearchItem(e.target.value)}  
                 style={{
                   backgroundColor: 'transparent',
                   outline: 'none',
@@ -96,26 +72,21 @@ const Navbar1 = () => {
                   height: '35px',
                   margin: '4px',
                 }}
-                onClick={handleSearch}
               >
                 <SearchIcon />
               </button>
             </div>
 
             {/* Heart and Cart Icons (visible before hamburger on mobile) */}
-            <Link to='/wishlist'
-                  className="text-decoration-none me-3"
-                  style={{ color: 'rgb(65, 65, 65)' }} >
-                 <FavoriteIcon /> 
+            {/* <a href="#" className="text-decoration-none me-3" style={{ color: 'rgb(65, 65, 65)' }}>
+              <FavoriteIcon />
+            </a> */}
+            <Link to= '/wishlist' className="text-decoration-none me-3" style={{ color: 'rgb(65, 65, 65)' }}>
+              <FavoriteIcon />
             </Link>
-            
-            <Link
-            to="/cart"
-            className="text-decoration-none me-3"
-            style={{ color: 'rgb(65, 65, 65)' }}
-          >
-            <LocalMallIcon />
-          </Link>
+            <Link to= '/cart-section' className="text-decoration-none me-3" style={{ color: 'rgb(65, 65, 65)' }}>
+              <LocalMallIcon />
+            </Link>
 
             {/* Hamburger Toggle Button */}
             <button
@@ -144,7 +115,7 @@ const Navbar1 = () => {
                 top: isMenuOpen ? '12vh' : 'auto',
                 // left:'0',
                 right: isMenuOpen? '0': '',
-                zIndex: 999, // menu is below navbar but above content
+                zIndex: 999, // Ensure menu is below navbar but above content
                 padding: isMenuOpen ? '20px 100px' : 0,
                 margin: isMenuOpen? 'auto 0':'',
                 boxShadow: isMenuOpen ? '0 2px 8px rgba(0, 0, 0, 0.1)' : 'none',
@@ -161,7 +132,6 @@ const Navbar1 = () => {
                     fontWeight: 600,
                     letterSpacing: '1px',
                   }}
-                  onClick={()=>isMenuOpen?setIsMenuOpen(!isMenuOpen):''}
                 >
                   Home
                 </a>
@@ -177,7 +147,6 @@ const Navbar1 = () => {
                   }}
                   onMouseOver={(e) => (e.target.style.color = 'rgb(210, 138, 31)')}
                   onMouseOut={(e) => (e.target.style.color = 'rgb(65, 65, 65)')}
-                  onClick={()=>isMenuOpen?setIsMenuOpen(!isMenuOpen):''}
                 >
                   Categories
                 </a>
@@ -193,7 +162,6 @@ const Navbar1 = () => {
                   }}
                   onMouseOver={(e) => (e.target.style.color = 'rgb(210, 138, 31)')}
                   onMouseOut={(e) => (e.target.style.color = 'rgb(65, 65, 65)')}
-                  onClick={()=>isMenuOpen?setIsMenuOpen(!isMenuOpen):''}
                 >
                   Process
                 </a>
@@ -209,7 +177,6 @@ const Navbar1 = () => {
                   }}
                   onMouseOver={(e) => (e.target.style.color = 'rgb(210, 138, 31)')}
                   onMouseOut={(e) => (e.target.style.color = 'rgb(65, 65, 65)')}
-                  onClick={()=>isMenuOpen?setIsMenuOpen(!isMenuOpen):''}
                 >
                   Contact Us
                 </a>

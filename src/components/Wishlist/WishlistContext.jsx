@@ -1,32 +1,28 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { Children, createContext, useContext, useState } from 'react'
 
-const WishlistContext = createContext();
+const WishlistContext = createContext()
 
-export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
+export const WishlistProvider = ({Children}) => {
+  const [wishlist, setWishlist] = useState([])
 
   const addToWishlist = (product) => {
-    setWishlist((prev) => {
-      if (prev.find((item) => item.id === product.id)) {
-        return prev; // Product already in wishlist, no change
+    setWishlist((prevWishlist) => {
+      // check if product already exixt in wishlist
+      if (!prevWishlist.some((item) => item.id ===product.id)) {
+        return [...prevWishlist,product]
       }
-      return [...prev, product];
-    });
-  };
+      return prevWishlist
+    })
+  }
 
-  const removeFromWishlist = (productId) => {
-    setWishlist((prev) => prev.filter((item) => item.id !== productId));
-  };
-
-  const isInWishlist = (productId) => {
-    return wishlist.some((item) => item.id === productId);
-  };
+  const removeFromWishlist =(productId) => {
+    setWishlist((prevWishlist) => prevWishlist.filter((item) => item.id != productId))
+  }
 
   return (
-    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFromWishlist, isInWishlist }}>
-      {children}
+    <WishlistContext.Provider value={{wishlist, addToWishlist,removeFromWishlist}}>
+      {Children}
     </WishlistContext.Provider>
-  );
-};
-
-export const useWishlist = () => useContext(WishlistContext);
+  )
+}
+export const useWishlist = () => useContext(WishlistContext)
