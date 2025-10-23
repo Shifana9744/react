@@ -58,6 +58,22 @@ const Products = () => {
           </Link>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (min-width: 574px) and (max-width: 769px) {
+          .col-sm-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+            display: flex;
+            justify-content: center;
+          }
+          .card {
+            max-width: 100%;
+            width: 100%;
+          }
+        }
+      `}
+      </style>
     </section>
   );
 };

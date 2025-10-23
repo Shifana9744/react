@@ -77,11 +77,7 @@ const Navbar1 = () => {
               </button>
             </div>
 
-            {/* Heart and Cart Icons (visible before hamburger on mobile) */}
-            {/* <a href="#" className="text-decoration-none me-3" style={{ color: 'rgb(65, 65, 65)' }}>
-              <FavoriteIcon />
-            </a> */}
-            <Link to= '/wishlist' className="text-decoration-none me-3" style={{ color: 'rgb(65, 65, 65)' }}>
+            <Link to= '/wish-list' className="text-decoration-none me-3" style={{ color: 'rgb(65, 65, 65)' }}>
               <FavoriteIcon />
             </Link>
             <Link to= '/cart-section' className="text-decoration-none me-3" style={{ color: 'rgb(65, 65, 65)' }}>

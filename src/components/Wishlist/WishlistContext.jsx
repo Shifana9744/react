@@ -2,12 +2,12 @@ import React, { Children, createContext, useContext, useState } from 'react'
 
 const WishlistContext = createContext()
 
-export const WishlistProvider = ({Children}) => {
+export const WishlistProvider = ({children}) => {
   const [wishlist, setWishlist] = useState([])
 
   const addToWishlist = (product) => {
     setWishlist((prevWishlist) => {
-      // check if product already exixt in wishlist
+      // check if product already exist in wishlist
       if (!prevWishlist.some((item) => item.id ===product.id)) {
         return [...prevWishlist,product]
       }
@@ -21,7 +21,7 @@ export const WishlistProvider = ({Children}) => {
 
   return (
     <WishlistContext.Provider value={{wishlist, addToWishlist,removeFromWishlist}}>
-      {Children}
+      {children}
     </WishlistContext.Provider>
   )
 }

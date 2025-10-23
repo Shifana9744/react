@@ -9,10 +9,8 @@ import Layout from './components/Layout/Layout'
 import Products from './components/Products/Products'
 import WishList from './components/WishList/WishList'
 import Cart from './components/Cart/Cart'
-import { WishlistProvider } from './components/WishList/WishlistContext'
-import { useState } from 'react'
-import ProductList from './components/ProductList/ProductList'
 import { CartProvider } from './components/Cart/CartContext'
+import { WishlistProvider } from './components/WishList/WishlistContext'
 
 function App() {
 
@@ -52,7 +50,7 @@ function App() {
           element : <Products />
         },
         {
-          path : '/wishlist',
+          path : '/wish-list',
           element : <WishList />
         },
         {
@@ -64,11 +62,12 @@ function App() {
   ])
 
   return (
-    // <WishlistProvider>
-    <CartProvider>
+    <WishlistProvider>
+      <CartProvider>
       <RouterProvider router={router} /> 
-    </CartProvider>
-    // </WishlistProvider>
+     </CartProvider>
+    </WishlistProvider>
+     
       
   )
   

@@ -4,53 +4,53 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from '../Button/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useCart } from '../Cart/CartContext';
-// import { useWishlist } from '../WishList/WishlistContext';
+import { useWishlist } from '../WishList/WishlistContext';
 
 const Cards = ({ image, name, price, id }) => {
   const { addToCart } = useCart()
+  const {wishlist, addToWishlist, removeFromWishlist } = useWishlist()
 
   // wishlist functions
-  const [wishlist, setWishlist] = useState([])
+  // const [wishlist, setWishlist] = useState([])
   
-    const addToWishlist = (product) => {
-      setWishlist((prevWishlist) => {
-        // check if product already exist in wishlist
-        if (!prevWishlist.some((item) => item.id ===product.id)) {
-          const newWishlist = [...prevWishlist,product]
-          // console.log('updated Wishlist:',newWishlist)  //log updated wishlist
-          return newWishlist
-        } 
-        // console.log('updated wishlist:', prevWishlist)    //log unchanged wishlist 
-        return prevWishlist
-      })
-    }
+  //   const addToWishlist = (product) => {
+  //     setWishlist((prevWishlist) => {
+  //       // check if product already exist in wishlist
+  //       if (!prevWishlist.some((item) => item.id ===product.id)) {
+  //         const newWishlist = [...prevWishlist,product]
+  //         // console.log('updated Wishlist:',newWishlist)  //log updated wishlist
+  //         return newWishlist
+  //       } 
+  //       // console.log('updated wishlist:', prevWishlist)    //log unchanged wishlist 
+  //       return prevWishlist
+  //     })
+  //   }
   
-    const removeFromWishlist =(productId) => {
-      setWishlist((prevWishlist) => {
-        const newWishlist = prevWishlist.filter((item) => item.id != productId)
-        // console.log('updated wishlist : ',newWishlist)
-        return newWishlist
-      })
-    }
+  //   const removeFromWishlist =(productId) => {
+  //     setWishlist((prevWishlist) => {
+  //       const newWishlist = prevWishlist.filter((item) => item.id != productId)
+  //       // console.log('updated wishlist : ',newWishlist)
+  //       return newWishlist
+  //     })
+  //   }
 
   const [isFavorite, setFavorite] = useState(false)
 
+  // Check if the product is in the wishlist on mount or when wishlist changes
+  useEffect(() => {
+    setFavorite(wishlist.some((item) => item.id === id));
+  }, [wishlist, id]);
+
   const handleFavorite = () => {
-    setFavorite(!isFavorite)
-    // create a product object with the necessary details
     const product = { id, name, price, image };
-    if(!isFavorite) {
-      addToWishlist(product)
+    if (!isFavorite) {
+      addToWishlist(product);
+      setFavorite(true);
     } else {
-      removeFromWishlist(id)
+      removeFromWishlist(id);
+      setFavorite(false);
     }
   }
-
-  useEffect(()=> {
-    const productsName = wishlist.map(item=> item.name)
-    console.log('Wishlist state updated :', productsName)
-    
-  },[wishlist])
 
   const handleAddToCart = () => {
     const product = { id, name, price, image }
